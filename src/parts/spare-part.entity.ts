@@ -1,16 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
+@Entity('spare_parts')
 export class SparePart {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  stock: number;
+  stock!: number;
 
   @Column('decimal')
-  price: number;
+  price!: number;
 }

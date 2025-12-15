@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { SparePart } from './spare-parts.entity';
+import { SparePart } from './spare-part.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
