@@ -6,17 +6,22 @@ describe('AppController', () => {
   let appController: AppController;
 
   beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
+    const module: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService],
+      providers: [
+        {
+          provide: AppService,
+          useValue: { getStatus: () => 'Repair & Reconditioning API is running' },
+        },
+      ],
     }).compile();
 
-    appController = app.get<AppController>(AppController);
+    appController = module.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+   describe('root', () => {
+    it('should return "Repair & Reconditioning API is running"', () => {
+      expect(appController.getStatus()).toBe('Repair & Reconditioning API is running');
     });
   });
 });

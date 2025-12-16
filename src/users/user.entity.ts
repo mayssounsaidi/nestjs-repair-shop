@@ -1,10 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-
-export enum Role {
-  ADMIN = 'ADMIN',
-  TECH = 'TECH',
-}
-
+import { Entity, PrimaryGeneratedColumn, Column,OneToMany } from 'typeorm';
+import { Role } from '../common/enums';
+import { Intervention } from '../interventions/interventions.entity';
 @Entity('user')
 export class User {
   @PrimaryGeneratedColumn()
@@ -19,8 +15,12 @@ export class User {
   @Column({ unique: true })
   username!: string;
 
-  @Column({ type: 'enum', enum: Role, default: Role.TECH })
+  @Column({
+    type: 'enum',
+    enum: Role,
+    default: Role.TECH,
+  })
   role!: Role;
-
- 
+  @OneToMany(() => Intervention, intervention => intervention.technician)
+  interventions!: Intervention[];
 }
