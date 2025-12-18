@@ -14,21 +14,26 @@ import { Roles } from '../common/decorators/roles.decorator';
 import { Role } from '../common/enums';
 import { CreateDeviceDto } from '../devices/devices.dto';
 
-@UseGuards(JwtAuthGuard, RolesGuard)
+
 @Controller('devices')
 export class DevicesController {
   constructor(private readonly devicesService: DevicesService) {}
 
+  // Toutes les routes nécessitent un token
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() dto: CreateDeviceDto) {
     return this.devicesService.create(dto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.devicesService.findAll();
   }
 
+  // DELETE réservé aux Admins
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)
   @Delete(':id')
   remove(@Param('id') id: number) {

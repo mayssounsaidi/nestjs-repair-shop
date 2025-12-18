@@ -1,0 +1,30 @@
+meta {
+  name: piece 
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/parts
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2NjA5MDQ4NSwiZXhwIjoxNzY2MDk0MDg1fQ.ALRtpAYLUidyZrNcjKkl2gYxe2gJTgjt91tEiM4AYAg
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "Écran OLED",
+    "stock": 10,
+    "price": 150
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,32 @@
+meta {
+  name: appareil
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:3000/devices
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJURUNIIiwiaWF0IjoxNzY2MDk0NzcwLCJleHAiOjE3NjYwOTgzNzB9.31VSAYrlgp9hQoZSCq4rs1hM_PlRPwPX0CvuFRvypzI
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "serialNumber": "123ABC",
+    "brand": "Apple",
+    "model": "iPhone 12",
+    "status": "PENDING",
+    "grade": "B"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
