@@ -1,0 +1,32 @@
+meta {
+  name: login tec
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/auth/login
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email": "tech1@example.com",
+    "password": "password123"
+  }
+  
+}
+
+vars:pre-request {
+  JWT: '''
+    {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJURUNIIiwiaWF0IjoxNzY2MDY1Njc1LCJleHAiOjE3NjYwNjkyNzV9.TXJ_uNXZcoA0jntpLDxH9CTrEX9WgSPR-TkXIdTheec"
+    }
+  '''
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,29 @@
+meta {
+  name: piece admin
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:3000/parts
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer <eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJURUNIIiwiaWF0IjoxNzY2MDY1Njc1LCJleHAiOjE3NjYwNjkyNzV9.TXJ_uNXZcoA0jntpLDxH9CTrEX9WgSPR-TkXIdTheec>
+}
+
+body:json {
+  {
+    "name": "Écran OLED",
+    "stock": 10,
+    "price": 150
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
